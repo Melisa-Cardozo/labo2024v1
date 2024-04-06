@@ -11,7 +11,7 @@ require("parallel")
 
 PARAM <- list()
 # reemplazar por las propias semillas
-PARAM$semillas <- c(102191, 200177, 410551, 552581, 892237)
+PARAM$semillas <- c(999421, 100043, 100151, 100343, 100703)
 
 #------------------------------------------------------------------------------
 # particionar agrega una columna llamada fold a un dataset
@@ -113,15 +113,17 @@ tb_grid_search <- data.table( max_depth = integer(),
 
 # itero por los loops anidados para cada hiperparametro
 
-for (vmax_depth in c(4, 6, 8, 10, 12, 14)) {
-  for (vmin_split in c(1000, 800, 600, 400, 200, 100, 50, 20, 10)) {
+for (vcp in c(-1, -0.5)) {
+  for (vmax_depth in c(5, 10, 15)) { 
+    for (vmin_split in c(520, 540, 580, 620, 640)) {
+      for (vmin_bucket in c(120, 240, 480, 960)) {
     # notar como se agrega
 
     # vminsplit  minima cantidad de registros en un nodo para hacer el split
     param_basicos <- list(
       "cp" = -0.5, # complejidad minima
       "minsplit" = vmin_split,
-      "minbucket" = 5, # minima cantidad de registros en una hoja
+      "minbucket" = vmin_bucket, # minima cantidad de registros en una hoja
       "maxdepth" = vmax_depth
     ) # profundidad máxima del arbol
 
@@ -131,7 +133,7 @@ for (vmax_depth in c(4, 6, 8, 10, 12, 14)) {
     # agrego a la tabla
     tb_grid_search <- rbindlist( 
       list( tb_grid_search, 
-            list( vmax_depth, vmin_split, ganancia_promedio) ) )
+            list( vmax_depth, vmin_split,vcp,vmin_bucket, ganancia_promedio) ) )
 
   }
 
