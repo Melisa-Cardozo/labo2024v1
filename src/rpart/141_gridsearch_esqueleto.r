@@ -102,8 +102,8 @@ dataset <- dataset[clase_ternaria != ""]
 # creo la carpeta donde va el experimento
 # HT  representa  Hiperparameter Tuning
 dir.create("./exp/", showWarnings = FALSE)
-dir.create("./exp/HT2020/", showWarnings = FALSE)
-archivo_salida <- "./exp/HT2020/gridsearch.txt"
+dir.create("./exp/HT202020/", showWarnings = FALSE)
+archivo_salida <- "./exp/HT202020/gridsearch.txt"
 
 # genero la data.table donde van los resultados del Grid Search
 tb_grid_search <- data.table( max_depth = integer(),
@@ -117,6 +117,9 @@ for (vcp in c(-1, -0.5)) {
   for (vmax_depth in c(5, 10, 15)) { 
     for (vmin_split in c(520, 540, 580, 620, 640)) {
       for (vmin_bucket in c(120, 240, 480, 960)) {
+      }
+    }    
+    
     # notar como se agrega
 
     # vminsplit  minima cantidad de registros en un nodo para hacer el split
@@ -133,7 +136,7 @@ for (vcp in c(-1, -0.5)) {
     # agrego a la tabla
     tb_grid_search <- rbindlist( 
       list( tb_grid_search, 
-            list( vmax_depth, vmin_split,vcp,vmin_bucket, ganancia_promedio) ) )
+            list( vmax_depth, vmin_split, vcp, vmin_bucket, ganancia_promedio) ) )
 
   }
 

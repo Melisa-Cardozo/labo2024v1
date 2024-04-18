@@ -16,8 +16,8 @@ PARAM$experimento <- 3510
 # parameetros rpart
 PARAM$rpart_param <- list(
   "cp" = -1,
-  "minsplit" = 100, 
-  "minbucket" = 10,
+  "minsplit" = 750, 
+  "minbucket" = 200,
   "maxdepth" = 4
 )
 
@@ -45,8 +45,8 @@ dataset <- fread("./datasets/dataset_pequeno.csv")
 
 # creo la carpeta donde va el experimento
 dir.create("./exp/", showWarnings = FALSE)
-carpeta_experimento <- paste0("./exp/KA", PARAM$experimento, "/")
-dir.create(paste0("./exp/KA", PARAM$experimento, "/"),
+carpeta_experimento <- paste0("./exp/KA_4", PARAM$experimento, "/")
+dir.create(paste0("./exp/KA_4", PARAM$experimento, "/"),
            showWarnings = FALSE
 )
 
