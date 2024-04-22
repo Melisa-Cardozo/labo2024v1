@@ -80,8 +80,8 @@ entrega <- as.data.table(list(
 # creo la carpeta donde va el experimento
 # HT  representa  Hiperparameter Tuning
 dir.create("./exp/", showWarnings = FALSE)
-dir.create("./exp/KA4310/", showWarnings = FALSE)
-archivo_salida <- "./exp/KA4310/KA4310_001.csv"
+dir.create("./exp/KA4310_hoy/", showWarnings = FALSE)
+archivo_salida <- "./exp/KA4310_hoy/KA4310_001.csv"
 
 # genero el archivo para Kaggle
 fwrite(entrega,
