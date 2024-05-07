@@ -18,10 +18,10 @@ PARAM$input$training <- c(202107) # meses donde se entrena el modelo
 PARAM$input$future <- c(202109) # meses donde se aplica el modelo
 
 
-PARAM$finalmodel$num_iterations <- 509
-PARAM$finalmodel$learning_rate <- 214821751340338
-PARAM$finalmodel$feature_fraction <-0.723174262410983
-PARAM$finalmodel$min_data_in_leaf <-911
+PARAM$finalmodel$num_iterations <- 559
+PARAM$finalmodel$learning_rate <- 0.0214821751340338
+PARAM$finalmodel$feature_fraction <- 0.723174262410983
+PARAM$finalmodel$min_data_in_leaf <- 911
 PARAM$finalmodel$num_leaves <- 680
 
 
@@ -63,11 +63,11 @@ dataset[foto_mes %in% PARAM$input$training, train := 1L]
 #--------------------------------------
 # creo las carpetas donde van los resultados
 # creo la carpeta donde va el experimento
-dir.create("./exp/", showWarnings = FALSE)
-dir.create(paste0("./exp/", PARAM$experimento, "/"), showWarnings = FALSE)
+dir.create("./exp042024/", showWarnings = FALSE)
+dir.create(paste0("./exp042024/", PARAM$experimento, "/"), showWarnings = FALSE)
 
 # Establezco el Working Directory DEL EXPERIMENTO
-setwd(paste0("./exp/", PARAM$experimento, "/"))
+setwd(paste0("./exp042024/", PARAM$experimento, "/"))
 
 
 
